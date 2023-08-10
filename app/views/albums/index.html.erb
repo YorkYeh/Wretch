@@ -1,0 +1,28 @@
+<h1 class="text-2xl m-5">相簿</h1>
+
+<%=link_to '新增相簿', new_album_path,class: 'action-btn'%>
+
+
+<ul class="grid grid-cols-1 sm:grid-cols-4 gap-4 mt-4">
+<% @albums.each do |album|%>
+ 
+    <li class="col-span-1">
+        <div class="border border-slate-400">
+            <picture>
+                <%= link_to album do%>
+                 <img src="https://fakeimg.pl/350x200/?text=<%= (1..10).to_a.sample %>">
+                <%end%>
+            </picture>
+
+            <footer class="flex justify-between px-2 py-1 font-semibold">
+                <span><%= link_to album.name, album %></span>
+                <% if album.password.present? %>
+                <span>X</span>
+                <%end%>
+            </footer>
+
+        
+        </div>
+    </li>
+<%end%>
+</ul>

@@ -1,0 +1,20 @@
+<h1 class="text-2xl m-5">訂單資訊</h1>
+
+
+<%= form_with(model: @order, data:{turbo: false}) do |f|%>
+
+<%= f.hidden_field :solution,value: params[:id]%>
+
+<div class="mb-5">
+<%= f.label :name %>
+<%= f.text_field :name %>
+</div>
+
+<div>
+<%= f.label :tel %>
+<%= f.phone_field :tel %>
+</div>
+
+<%= f.submit '前往付款',class:'action-btn mt-5'%>
+
+<%end%>

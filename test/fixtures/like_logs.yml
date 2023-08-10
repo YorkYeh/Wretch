@@ -1,0 +1,16 @@
+# == Schema Information
+#
+# Table name: like_logs
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer          not null
+#  article_id :integer          not null
+#
+
+one:
+  user: one
+  article: one
+
+two:
+  user: two
+  article: two

@@ -1,0 +1,41 @@
+<h1><%= @article.title %></h1>
+
+<div data-controller="like"
+     data-id="<%= @article.id %>"
+     data-liked="<%= current_user&.liked?(@article) %>"
+     >
+
+<button data-like-target="likebtn" data-action="click->like#toggle"></button>
+
+</div>
+
+<%# <div data-controller="hello" data-action="abc@window->hello#go">X</div> %>
+
+<article>
+    <p><%= @article.content %></p>
+</article>
+
+<hr>
+
+
+<h2>留言板</h2>
+
+<%= form_with(model: @comment,url: article_comments_path(@article)) do |f|%>
+
+<div>
+<%= f.label :content, '留言內容'%><br/>
+<%= f.text_area :content%>
+</div>
+
+<%= f.submit '新增留言'%>
+
+<ul id="comment_list">
+  <%= render @comments %>
+</ul>
+
+<%end%>
+
+
+
+
+

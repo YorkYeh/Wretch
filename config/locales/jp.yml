@@ -1,0 +1,19 @@
+jp:
+  navbar:
+    article: 記事
+    album: アルバム
+    pay: 支払い
+
+  helpers:
+    submit:
+      article:
+        create: 記事を作成
+        update: 記事を更新
+
+    label:
+      article:
+        title: タイトル
+        sub_title: サブタイトル
+        category: カテゴリー
+        content: 内容
+        password: パスワード

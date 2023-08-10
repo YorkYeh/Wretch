@@ -1,0 +1,20 @@
+
+en:
+  navbar:
+    article: Article
+    album: Album
+    pay: Pay
+
+  helpers:
+    submit:
+      article:
+        create: Create Article
+        update: Update Article
+
+    label:
+      article:
+        title: Title
+        sub_title: Sub title
+        category: Category
+        content: Content
+        password: Password

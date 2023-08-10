@@ -1,0 +1,29 @@
+<h1 class="text-2xl m-5">新增相簿</h1>
+
+<%= form_with(model: @album, data: {turbo: false}) do |f| %>
+<section class="flex flex-col gap-2 m-5">
+
+    <div>
+        <%= f.label :name,'相簿名字' %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div>
+        <%= f.label :description,'相簿簡介' %>
+        <%= f.text_area :description %>
+    </div>
+
+    <div>
+        <%= f.label :password,'相簿密碼' %>
+        <%= f.password_field :password %>
+    </div>
+
+    <div>
+        <%= f.label :online, '公開' %>
+        <%= f.check_box :online %>
+    </div>
+</section>
+
+    <%= f.submit  class:'action-btn mt-6'%>
+
+<% end %>

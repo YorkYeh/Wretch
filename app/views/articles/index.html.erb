@@ -1,0 +1,54 @@
+
+<h1 class="text-2xl m-5">文章列表</h1> 
+
+
+<%= form_with(url: articles_path,method: :get) do |f|%>
+<%= f.search_field :keyword ,value: params[:keyword]%>
+<%= f.submit 'Search',class: "action-btn"%>
+<%= link_to "清除", articles_path,class:'action-btn' %>
+<%end%>
+<%# 
+<input type="search"> 
+<button class="action-btn">Search</button> %>
+
+<%# <a href="/articles/new">新增文章</a> %>
+<%= link_to "新增文章", new_article_path, class: 'action-btn mt-5'%> 
+
+
+
+
+
+<ul>
+    <% @articles.each do |article| %>
+    
+        <li style="margin: 20px">
+        <%= link_to article.title, article_path(article) %>
+            
+        <article>
+          <p>
+          <% if article.password.present? %>
+            <%= form_with(model: article,url: unlock_article_path(article),data:{turbo: false}) do |f| %>
+            <%= f.label :password,'密碼' %>
+            <%= f.password_field :password %>
+            <%= f.submit '送出'%>
+            <% end %>
+          <% else %>
+            <%= article.content.truncate(100) %>
+          <% end %>
+          </p>
+          
+          <footer><%= link_to '...閱讀更多', article_path(article.id)%></footer>
+        </article>
+
+        <%= link_to '更新', edit_article_path(article) %>
+        <%= link_to '刪除', article_path(article),
+                            data: {
+                                turbo_method: 'delete',
+                                turbo_confirm: '確認刪除？'
+                            } %>
+        <%=article.user&.email %>
+        </li>
+
+        
+    <% end %>
+</ul>

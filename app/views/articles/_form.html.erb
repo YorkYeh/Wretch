@@ -1,0 +1,31 @@
+<%# Form Helper %>
+
+<%= form_with(model: model, data: {turbo: false}) do |f| %>
+    <div>
+        <%= f.label :title%>
+        <%= f.text_field :title %>
+    </div>
+
+    <div>
+        <%= f.label :sub_title %>
+        <%= f.text_field :sub_title %>
+    </div>
+
+    <div>
+        <%= f.label :category %>
+        <%= f.select :category, Article.categories.map{|k,v| [k.to_s,k.to_s]} %>
+    </div>
+
+    <div>
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+    </div>
+
+    <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+    </div>
+
+    <%= f.submit class:'action-btn'%>
+
+<% end %>
