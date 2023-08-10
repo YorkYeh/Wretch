@@ -3,7 +3,7 @@ class AlbumsController < ApplicationController
     before_action :authenticate_user! , only:[:new, :create, :update, :edit, :destroy]
 
     def index
-        @albums = Album.all
+        @albums = Album.order(position: :asc)
     end
     
     def show
@@ -39,6 +39,19 @@ class AlbumsController < ApplicationController
     
     def destroy
     end
+
+    def sort
+        @album = current_user.albums.find(params[:id])
+        new_position = params[:position].to_i
+
+        if @album.insert_at(new_position)
+            render json:{}, status: :ok
+        else
+            render json:{}, status: 500 
+        end
+
+    end
+
 
 
     private

@@ -77,3 +77,5 @@ group :test do
 end
 
 gem "aasm", "~> 5.5"
+
+gem "acts_as_list", "~> 1.1"
